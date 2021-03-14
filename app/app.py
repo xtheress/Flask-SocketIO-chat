@@ -42,9 +42,10 @@ def handle_message(data):
 def index():
     print(session)
     username = None
+    messages = ChatMessages.query.all()
     if session.get("username"):
         username = session.get("username")
-    return render_template('index.html', username=username, messages=ChatMessages.query.all())
+    return render_template('index.html', username=username, messages=messages)
 
 
 @app.route('/login', methods=["POST"])
